@@ -1,0 +1,938 @@
+getgenv().Private = {
+    ['Options'] = {
+        Luarmor_Key = "Replace With Luarmor Key",
+        Version = "V2",
+        Intro = true,
+    },
+    ['Stealth'] = {
+        Enabled = true,
+        StreamProof = true,
+    },
+    ['Disable_Everything'] = {
+        Disable = {Enabled = true, Disable_Key = "K"},
+        Delay = 5,
+    },
+    ['ReDirection'] = {
+        ['Optimize'] = {
+            Enabled = true,
+            HitChance = 100,
+            AirShot_HitChance = 100,
+            Notifications = true,
+        },
+        ['KeyBind'] = {
+            Use_KeyBind = true,
+            Key = "P",
+        },
+        ['Predict'] = {
+            Enabled = true,
+            Prediction = 0.135,
+            AutoMaticPredict = true, -- // soon
+        },
+        ['HitParts'] = {
+            HitPart = 'HumanoidRootPart',
+            HitPart_Type = 'Nearest Point', -- // 'Nearest Cursor', 'Nearest Point'
+        },
+        Whitelist_Part = {Enabled = false, "Head", "UpperTorso", "HumanoidRootPart", "LowerTorso"}
+    },
+    ['AimAssist'] = {
+        ['Optimize'] = {
+            Enabled = true,
+            FirstPerson = true,
+            ThirdPerson = true,
+        },
+        ['KeyBind'] = {
+            Key = "Q",
+        },
+        ['Smoothing'] = {
+            Enabled = true,
+            Smoothness = 0.030,
+            AirShot_Smoothness = 0.050,
+        },
+        ['Predict'] = {
+            Enabled = true,
+            Prediction = 0.125,
+            AutoMaticPredict = false, -- // soon
+        },
+        ['HitParts'] = {
+            HitPart = 'HumanoidRootPart',
+            Use_Airshot_HitPart = false,
+            Airshot_HitPart = 'Head',
+        },
+        Whitelist_Part = {Enabled = false, "Head", "UpperTorso", "HumanoidRootPart", "LowerTorso"},
+        ['Shake'] = {
+            Enabled = true,
+            ['Shake_X'] = {
+                Shake_X = 0,
+                AirShot_X = 0,
+            },
+            ['Shake_Y'] = {
+                Shake_Y = 0,
+                AirShot_Y = 0,
+            },
+            ['Shake_Z'] = {
+                Shake_Z = 0,
+                AirShot_Z = 0
+            }
+        },
+        ['FrameSkip'] = {
+            Enabled = true,
+            ['KeyBind'] = {
+                Key = "Q",
+            }
+        },
+        ['Easing'] = { -- // Linear, Sine, Back, Quad, Quart, Quint, Bounce, Elastic, Exponential, Circular, Cubic
+            Style = 'Sine',
+            ['AirShot'] = {
+                AirShot_Style = 'Linear',
+            }
+        },
+    },
+    ['FOV'] = {
+        ['ReDirection'] = {
+            ['Optimize'] = {
+                Visible = true,
+                Filled = false,
+            },
+            ['Radius'] = {
+                Size = 35,
+                Transparency = 1,
+                Thickness = 1,
+            },
+            ['Circle'] = {
+                Color = Color3.fromRGB(0, 0, 0),
+            }
+        },
+        ['AimAssist'] = {
+            ['Optimize'] = {
+                Visible = false,
+                Filled = false,
+            },
+            ['Radius'] = {
+                Size = 70,
+                Transparency = 1,
+                Thickness = 1,
+            },
+            ['Circle'] = {
+                Color = Color3.fromRGB(0, 0, 0),
+            }
+        },
+    },
+    ['Checks'] = {
+        AntiGroundShot = true,
+        Knocked = true,
+        Crew = true,
+        Wall = false,
+        Friend = true,
+        Grabbed = true,
+        Anti_Curve = true,
+        ['Optimize'] = {
+            Enabled = true, -- // dont touch
+            Distance = 1000,
+        }
+    },
+    ['Resolver'] = { -- // MoveDirection
+        Enabled = true,
+        Anti_Aim_Viewer = true,
+        PreDiction = 16.5, -- // These Settings That Are Set Are Good
+    },
+    ['MemorySpoofer'] = {
+        Enabled = true,
+        Start = 1000,
+        End = 1400,
+    },
+    ['GunFOV'] = {
+        Enabled = false,
+        DoubleBarrel = 20,
+        Revolver = 15,
+        Shotgun = 30,
+        TacticalShotgun = 25,
+        Smg = 25,
+        Rifle = 50,
+        Silencer = 10,
+        SilencerAR = 15,
+        Glock = 5,
+        AK47 = 10,
+        AR = 15,
+    },
+    ['RangeFov'] = {
+        Enabled = true,
+        Close_Detect = 10,
+        Medium_Detect = 20,
+        Far_Detect = math.huge,
+        Close = 35,
+        Med = 10,
+        Far = 5,
+    },
+	['AutoPrediction'] = {
+        Enabled = false,
+        Ping_10 = 0.10,
+        Ping_20 = 0.11,
+        Ping_30 = 0.12,
+        Ping_40 = 0.123,
+        Ping_50 = 0.125,
+        Ping_60 = 0.127,
+        Ping_70 = 0.133,
+        Ping_80 = 0.134,
+        Ping_90 = 0.1365,
+        Ping_100 = 0.1374,
+        Ping_110 = 0.12,
+        Ping_120 = 0.12,
+        Ping_130 = 0.12,
+        Ping_140 = 0.13,
+        Ping_150 = 0.1405,
+    },
+    ['Commands'] = {
+        Enabled = true,
+        HitChance = "/HitChance", -- // Ex; /HitChance 100
+        Silent_Fov = "/Fov", -- // Ex; /Fov 35
+        Silent_Prediction = "/Prediction", -- // Ex; /Prediction 0.135
+        AimAssist_Fov = "!Fov", -- // Ex; !Fov 70
+        AimAssist_Prediction = "!Prediction", -- // Ex; !Prediction 0.125
+    },
+    ['Macro'] = {
+        Enabled = true,
+        Bind = "X",
+        BypassMacroAbuse = true,
+        Speed = 1,
+    },
+    ['Spin'] = {
+        Enabled = true,
+        KeyBind = "Z",
+        Speed = 185 / 1, -- // only 0 to 100 speed and if 185 / 1 then just leave it as that or do 0 to 100 speed
+    }
+}
+
+
+local Mouse, RunService, TPservice = LocalPlayer:GetMouse(), game:GetService("RunService"), game:GetService("TeleportService")
+
+local Circle1, Circle2 = Drawing.new("Circle"), Drawing.new("Circle")
+
+local Plr,Plr2,IsTargetting
+
+local targ = nil
+
+local v3, V3, v2, V2 = Vector3, Vector3, Vector2, Vector2
+local StarterGui, Players, LocalPlayer, Client = game:GetService("StarterGui"), game:GetService("Players"), Players.LocalPlayer, LocalPlayer
+
+local Character, GetPlayers = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait(), Players.GetPlayers
+local GetPlayers, Workspace, GuiService = Players.GetPlayers, game:GetService("Workspace"), game:GetService("GuiService")
+local GetGuiInset, TeleportService, CurrentCamera, Camera = GuiService.GetGuiInset, game:GetService("TeleportService"), Workspace.CurrentCamera, game.Workspace.CurrentCamera
+
+local SpeedGlitch, Spin = false, false
+
+local function notify(text) 
+    if Private.ReDirection.Optimize.Notifications then 
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "Private.cc",
+            Text = text, 
+            Duration = 2
+        })
+    end
+end
+
+function WallCheck (destination, ignore)
+    if (getgenv().Private.Checks.Wall) then
+        local Origin = Camera.CFrame.p
+        local CheckRay = Ray.new(Origin, destination - Origin)
+        local Hit = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(CheckRay, ignore)
+        return Hit == nil
+    else
+        return true
+    end
+end
+
+local WTS = (function(Object)
+	local ObjectVector = CurrentCamera:WorldToScreenPoint(Object.Position)
+	return V2.new(ObjectVector.X, ObjectVector.Y)
+end)
+
+local Filter = (function(obj)
+	if (obj:IsA('BasePart')) then
+		return true
+	end
+end)
+
+local MousePosVector2 = (function()
+	return V2.new(Mouse.X, Mouse.Y) 
+end)
+
+
+
+
+function SilentFOV()
+  if not (Circle2) then
+      return
+  end
+  Circle2.Visible = getgenv().Private.FOV.ReDirection.Optimize.Visible
+  Circle2.Radius =  getgenv().Private.FOV.ReDirection.Radius.Size * 3
+  Circle2.Position = V2.new(Mouse.X, Mouse.Y + GetGuiInset(GuiService).Y)
+  Circle2.Filled = getgenv().Private.FOV.ReDirection.Optimize.Filled
+  Circle2.Transparency = getgenv().Private.FOV.ReDirection.Radius.Transparency
+  Circle2.Thickness = getgenv().Private.FOV.ReDirection.Radius.Thickness
+  Circle2.NumSides = 100
+  Circle2.Color = getgenv().Private.FOV.ReDirection.Circle.Color
+  return Circle2
+end
+RunService.Heartbeat:Connect(function() AimAssistFOV() SilentFOV()end)
+
+
+function AimAssistFOV()
+    if not (Circle1) then
+        return
+    end
+    Circle1.Visible = getgenv().Private.FOV.ReDirection.Optimize.Visible
+    Circle1.Radius =  getgenv().Private.FOV.ReDirection.Radius.Size * 3
+    Circle1.Position = V2.new(Mouse.X, Mouse.Y + GetGuiInset(GuiService).Y)
+    Circle1.Filled = getgenv().Private.FOV.ReDirection.Optimize.Filled
+    Circle1.Transparency = getgenv().Private.FOV.ReDirection.Radius.Transparency
+    Circle1.Thickness = getgenv().Private.FOV.ReDirection.Radius.Thickness
+    Circle1.NumSides = 100
+    Circle1.Color = getgenv().Private.FOV.ReDirection.Circle.Color
+    return Circle1
+end
+
+local ClosestPlrFromMouse = function()
+    local Target, Closest = nil, 1 / 0
+    for _ ,v in ipairs(Players:GetPlayers()) do
+        if (v.Character and v ~= Client and v.Character:FindFirstChild("HumanoidRootPart")) and WallCheck(v.Character.HumanoidRootPart.Position, {Client, v.Character})  then
+        local Position, OnScreen = Camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+        local Distance = (V2.new(Position.X, Position.Y) - V2.new(Mouse.X, Mouse.Y)).Magnitude
+        if (Circle2.Radius > Distance and Distance < Closest and OnScreen and Position) then
+        Closest = Distance
+        Target = v
+        end
+        end
+    end
+    return Target
+end
+
+local GetClosestBodyPart = (function()
+	local ShortestDistance = math.huge
+	local BodyPart = nil
+	for _, v in next, game.Players:GetPlayers() do
+		if (v ~= Client and v.Character and v.Character:FindFirstChild("Humanoid")) then
+			for k, x in next, v.Character:GetChildren() do
+				if (Filter(x)) then
+					local Distance = (WTS(x) - MousePosVector2()).magnitude
+					if (Distance < ShortestDistance) then
+						ShortestDistance = Distance
+						BodyPart = x
+					end
+				end
+			end
+		end
+	end
+	return BodyPart
+end)
+
+local function GetClosestPointBodyPart(Part)
+    local mouseray = Mouse.UnitRay
+    mouseray = mouseray.Origin + (mouseray.Direction * (Part.Position - mouseray.Origin).Magnitude)
+    local point =
+        (mouseray.Y >= (Part.Position - Part.Size / 2).Y and mouseray.Y <= (Part.Position + Part.Size / 2).Y) and
+            (Part.Position + V3.new(0, -Part.Position.Y + mouseray.Y, 0)) or Part.Position
+    local check = RaycastParams.new()
+    check.FilterType = Enum.RaycastFilterType.Whitelist
+    check.FilterDescendantsInstances = {Part}
+    local ray = game:GetService("Workspace"):Raycast(mouseray, (point - mouseray), check)
+    if ray then
+        return ray.Position
+    else
+        return Mouse.Hit.Position
+    end
+end
+
+
+task.spawn(function ()
+    while task.wait() do
+    	if getgenv().Private.ReDirection.Optimize.Enabled then
+            targ = ClosestPlrFromMouse()
+    	end
+        if Plr then
+            if getgenv().Private.AimAssist.Optimize.Enabled and (Plr.Character) and getgenv().Private.AimAssist.NearestCursorHitPart then
+                getgenv().Private.AimAssist.HitParts.HitPart = tostring(GetClosestBodyPart(Plr.Character))
+            end
+        end
+        if targ then
+            if getgenv().Private.ReDirection.Optimize.Enabled and (targ.Character) and getgenv().Private.ReDirection.HitParts.HitPart_Type == "Nearest Part" then
+                getgenv().Private.ReDirection.HitParts.Prediction = tostring(GetClosestBodyPart(targ.Character))
+            end
+        end
+    end
+end)
+
+task.spawn(function ()
+    while task.wait() do
+    	if getgenv().Private.ReDirection.Optimize.Enabled then
+            targ = ClosestPlrFromMouse()
+    	end
+        if Plr then
+            if getgenv().Private.AimAssist.Optimize.Enabled and (Plr.Character) and getgenv().Private.AimAssist.NearestCursorHitPart then
+                getgenv().Private.AimAssist.HitParts.HitPart = tostring(GetClosestPointBodyPart(Plr.Character))
+            end
+        end
+        if targ then
+            if getgenv().Private.ReDirection.Optimize.Enabled and (targ.Character) and getgenv().Private.ReDirection.HitParts.HitPart_Type == "Nearest Point" then
+                getgenv().Private.ReDirection.HitParts.Prediction = tostring(GetClosestPointBodyPart(targ.Character))
+            end
+        end
+    end
+end)
+
+if getgenv().Private.AimAssist.HitParts.Use_Airshot_HitPart then
+    if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.HitParts.Airshot_HitPart
+    else
+        Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+        if new == Enum.HumanoidStateType.Freefall then
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.HitParts.Airshot_HitPart
+        else
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.HitParts.HitPart
+        end
+        end)
+    end
+end
+
+if getgenv().Private.AimAssist.Shake.Enabled then
+    if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.Shake.AirShot_Enabled
+    else
+        Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+        if new == Enum.HumanoidStateType.Freefall then
+        getgenv().Private.AimAssist.Shake.Shake_X.X = getgenv().Private.AimAssist.Shake.Shake_X.AirShot_X
+        else
+        getgenv().Private.AimAssist.Shake.Shake_X.X = getgenv().Private.AimAssist.Shake.Shake_X.AirShot_X
+        end
+        end)
+    end
+end
+
+if getgenv().Private.AimAssist.Shake.Enabled then
+    if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.Shake.AirShot_Enabled
+    else
+        Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+        if new == Enum.HumanoidStateType.Freefall then
+        getgenv().Private.AimAssist.Shake.Shake_Y.Y = getgenv().Private.AimAssist.Shake.Shake_Y.AirShot_Y
+        else
+        getgenv().Private.AimAssist.Shake.Shake_Y.Y = getgenv().Private.AimAssist.Shake.Shake_Y.AirShot_Y
+        end
+        end)
+    end
+end
+
+if getgenv().Private.AimAssist.Shake.Enabled then
+    if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+        getgenv().Private.AimAssist.HitParts.HitPart = getgenv().Private.AimAssist.Shake.AirShot_Enabled
+    else
+        Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+        if new == Enum.HumanoidStateType.Freefall then
+        getgenv().Private.AimAssist.Shake.Shake_Z.Z = getgenv().Private.AimAssist.Shake.Shake_Z.AirShot_Z
+        else
+        getgenv().Private.AimAssist.Shake.Shake_Z.Z = getgenv().Private.AimAssist.Shake.Shake_Z.AirShot_Z
+        end
+        end)
+    end
+end
+
+
+Mouse.KeyDown:Connect(function(Key)
+    local Keybind = getgenv().Private.AimAssist.KeyBind.Key:lower()
+    if (Key == Keybind) then
+        if getgenv().Private.AimAssist.Optimize.Enabled == true then
+        IsTargetting = not IsTargetting
+        if IsTargetting then
+        Plr = NearestPerson()
+        else
+        if Plr ~= nil then
+        Plr = nil
+        end
+        end
+       end
+    end
+end)
+
+
+if getgenv().Private.FOV.ReDirection.Optimize.Visible == true then
+    function NearestPerson()
+        local closestPlayer
+        local shortestDistance = getgenv().Private.FOV.ReDirection.Radius.Size
+        for i, v in ipairs(game.Players:GetPlayers()) do
+        pcall(function()
+        if v ~= game.Players.LocalPlayer and v.Character and
+        v.Character:FindFirstChild("Humanoid") and WallCheck(v.Character.HumanoidRootPart.Position, {Client, v.Character})  then
+        local pos = CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+        local magnitude =
+        (V2.new(pos.X, pos.Y) - V2.new(Mouse.X, Mouse.Y)).magnitude
+        if (V2.new(pos.X, pos.Y) - V2.new(Mouse.X, Mouse.Y)).magnitude < shortestDistance then
+        closestPlayer = v
+        shortestDistance = magnitude
+        end
+        end
+        end)
+        end
+    return closestPlayer
+    end
+
+    elseif getgenv().Private.FOV.ReDirection.Optimize.Visible == false then
+        function NearestPerson()
+        local closestPlayer
+        local shortestDistance = getgenv().Private.Checks.Optimize.Enabled and getgenv().Private.Checks.Optimize.Distance
+        for i, v in ipairs(game.Players:GetPlayers()) do
+        pcall(function()
+        if v ~= game.Players.LocalPlayer and v.Character and
+        v.Character:FindFirstChild("Humanoid") and WallCheck(v.Character.HumanoidRootPart.Position, {Client, v.Character}) then
+        local pos = CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+        local magnitude =
+        (V2.new(pos.X, pos.Y) - V2.new(Mouse.X, Mouse.Y)).magnitude
+        if (V2.new(pos.X, pos.Y) - V2.new(Mouse.X, Mouse.Y)).magnitude < shortestDistance then
+        closestPlayer = v
+        shortestDistance = magnitude
+        end
+        end
+        end)
+        end
+        return closestPlayer
+    end
+end
+
+
+
+RunService.RenderStepped:Connect(function()
+    if getgenv().Private.AimAssist.Optimize.Enabled == true and Plr and Plr.Character ~= nil then
+        if getgenv().Private.AimAssist.Shake.Enabled then
+        local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Position + Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Velocity*getgenv().Private.AimAssist.Predict.Prediction +
+        V3.new(
+        math.random(-getgenv().Private.AimAssist.Shake.Shake_X.X,getgenv().Private.AimAssist.Shake.Shake_X.X),
+        math.random(-getgenv().Private.AimAssist.Shake.Shake_Y.Y,getgenv().Private.AimAssist.Shake.Shake_Y.Y),
+        math.random(-getgenv().Private.AimAssist.Shake.Shake_Z.Z,getgenv().Private.AimAssist.Shake.Shake_Z.Z)
+        )*1)
+        Camera.CFrame = Camera.CFrame:Lerp(Main,getgenv().Private.AimAssist.Smoothness,Enum.EasingStyle[getgenv().Private.Easing.Style],Enum.EasingDirection.InOut,Enum.EasingStyle.Bounce,Enum.EasingDirection.Out,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out)
+        else
+        local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Position + Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Velocity*getgenv().Private.AimAssist.Predict.Prediction)
+        Camera.CFrame = Camera.CFrame:Lerp(Main,getgenv().Private.AimAssist.Smoothness,Enum.EasingStyle[getgenv().Private.Easing.AirShot_Style],Enum.EasingDirection.Out)
+        end
+    end
+end)
+
+RunService.Heartbeat:Connect(function()
+        if getgenv().Private.AimAssist.Optimize.Enabled == true and Plr and Plr.Character ~= nil then
+        if getgenv().Private.Checks.Knocked then
+        if Plr.Character.BodyEffects["K.O"].Value then Plr = nil 
+        end
+        end
+        end
+end)
+
+
+local grmt = getrawmetatable(game)
+local backupindex = grmt.__index
+setreadonly(grmt, false)
+
+grmt.__index = newcclosure(function(self, v)
+if (getgenv().Private.ReDirection.Optimize.Enabled and Mouse and tostring(v) == "Hit") then
+    Plr2 = ClosestPlrFromMouse()
+    if Plr2 then
+        local endpoint = game.Players[tostring(Plr2)].Character[getgenv().Private.ReDirection.HitParts.Prediction].CFrame + (
+        game.Players[tostring(Plr2)].Character[getgenv().Private.ReDirection.HitParts.Prediction].Velocity *getgenv().Private.ReDirection.Predict.Prediction
+        )
+        return (tostring(v) == "Hit" and endpoint)
+    end
+end
+return backupindex(self, v)
+end)
+
+RunService.RenderStepped:Connect(function()
+    if getgenv().Private.AimAssist.Smoothing.Enabled and getgenv().Private.AimAssist.Optimize.Enabled  == true then
+        local Main = CFrame.new(workspace.CurrentCamera.CFrame.p, Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Position + Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Velocity*getgenv().Private.AimAssist.Predict.Prediction)
+         workspace.CurrentCamera.CFrame = workspace.CurrentCamera.CFrame:Lerp(Main,getgenv().Private.AimAssist.Smoothness,Enum.EasingStyle[getgenv().Private.Easing.Style],Enum.EasingDirection[getgenv().Private.Easing.Direction])
+    elseif getgenv().Private.AimAssist.Smoothing.Enabled == false and  getgenv().Private.AimAssist.Optimize.Enabled == true then
+        workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position, Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Position + Plr.Character[getgenv().Private.AimAssist.HitParts.HitPart].Velocity*getgenv().Private.AimAssist.Predict.Prediction)
+        end
+end)
+
+local SmoothnessTable = getgenv().Private.AimAssist.Smoothing.Smoothness
+local AirSmoothnessTable = getgenv().Private.AimAssist.Smoothing.AirShot_Smoothness
+
+if Private.AimAssist.Optimize.Enabled then
+    if Plr.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall then
+        if Private.AimAssist.Smoothing.Enabled then
+            Private.AimAssist.Smoothness = Private.AimAssist.Smoothing.AirShot_Smoothness
+        else
+        if Private.AimAssist.Smoothing.Enabled then
+            SmoothnessTable = AirSmoothnessTable
+        end
+    end
+end
+end
+
+getgenv().Extra = {
+    ["Enabled"] = (getgenv().Void.GunFOV.Enabled),
+    ["Double-Barrel SG"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.DoubleBarrel)
+    },
+    ["DoubleBarrel"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.DoubleBarrel)
+    },
+    ["Revolver"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Revolver)
+    },
+    ["SMG"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Smg)
+    },
+    ["Shotgun"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Shotgun)
+    },
+    ["TacticalShotgun"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.TacticalShotgun)
+    },
+    ["Rifle"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Rifle)
+    },
+    ["Silencer"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Silencer)
+    },
+    ["SilencerAR"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.SilencerAR)
+    },
+    ["Glock"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.Glock)
+    },
+    ["AK47"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.AK47)
+    },
+    ["AR"] = {
+        ["FOV"] = (getgenv().Void.GunFOV.AR)
+    }
+}
+
+local Script = {
+    Functions = {}
+}
+Script.Functions.getToolName = function(name)
+    local split = string.split(string.split(name, "[")[2], "]")[1]
+    return split
+end
+Script.Functions.getEquippedWeaponName = function()
+    if (Client.Character) and Client.Character:FindFirstChildWhichIsA("Tool") then
+        local Tool = Client.Character:FindFirstChildWhichIsA("Tool")
+        if string.find(Tool.Name, "%[") and string.find(Tool.Name, "%]") and not string.find(Tool.Name, "Wallet") and
+            not string.find(Tool.Name, "Phone") then
+            return Script.Functions.getToolName(Tool.Name)
+        end
+    end
+    return nil
+end
+
+if Script.Functions.getEquippedWeaponName() ~= nil then
+    local WeaponSettings = getgenv().Extra[Script.Functions.getEquippedWeaponName()]
+    if WeaponSettings ~= nil and getgenv().Private.GunFOV.Enabled == true then
+        getgenv().Private.FOV.ReDirection.Radius.Size = WeaponSettings.FOV
+    else
+        getgenv().Private.FOV.ReDirection.Radius.Size = getgenv().Private.FOV.ReDirection.Radius.Size
+    end
+end
+
+Script.Functions.Alive = function(Plr)
+	if Plr and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and Plr.Character:FindFirstChild("Humanoid") ~= nil and Plr.Character:FindFirstChild("Head") ~= nil then
+		return true
+	end
+	return false
+end
+
+if Private.RangeFov.Enabled then
+    if Script.Functions.Alive(Plr2) and Script.Functions.Alive(Client) then
+        local Magnitude = (Plr2.Character.HumanoidRootPart.Position - Client.Character.HumanoidRootPart.Position).Magnitude
+        if Magnitude < Private.RangeFov.Close_Detect then
+            Private.FOV.ReDirection.Radius.Size = Private.RangeFov.Close
+        elseif Magnitude < Private.RangeFov.Medium_Detect then
+            Private.FOV.ReDirection.Radius.Size = Private.RangeFov.Med
+        elseif Magnitude < Private.RangeFov.Far_Detect then
+            Private.FOV.ReDirection.Radius.Size = Private.RangeFov.Far
+        end
+    end
+end
+
+Client.Chatted:Connect(function(message)
+    if getgenv().Private.Commands.Enabled then
+        local args = string.split(message, " ")
+        if args[1] == getgenv().Private.Commands.Silent_Fov and args[2] ~= nil then
+        getgenv().Private.FOV.ReDirection.Radius.Size = tonumber(args[2])
+        elseif args[1] == getgenv().Private.Commands.AimAssist_Fov and args[2] ~= nil then
+        getgenv().Private.FOV.ReDirection.Radius.Size = tonumber(args[2])
+    end
+    if getgenv().Private.Commands.Enabled then
+        local args = string.split(message, " ")
+        if args[1] == getgenv().Private.Commands.Silent_Prediction and args[2] ~= nil then
+        getgenv().Private.ReDirection.Predict.Prediction = tonumber(args[2])
+        elseif args[1] == getgenv().Private.Commands.AimAssist_Prediction and args[2] ~= nil then
+        getgenv().Private.AimAssist.Predict.Prediction = tonumber(args[2])
+        end
+    end
+    if getgenv().Private.Commands.Enabled then
+        local args = string.split(message, " ")
+        if args[1] == getgenv().Private.Commands.HitChance and args[2] ~= nil then
+        getgenv().Private.ReDirection.HitChance = tonumber(args[2])
+        end
+    end
+end
+end)
+
+Mouse.KeyDown:Connect(
+  function(Key)
+    if getgenv().Private.ReDirection.KeyBind.Use_KeyBind then
+    if (Key ==  getgenv().Private.ReDirection.KeyBind.Key:lower()) then
+        if getgenv().Private.ReDirection.Optimize.Enabled == true then
+        getgenv().Private.ReDirection.Optimize.Enabled = false
+        notify("Disabled.")
+        else
+        getgenv().Private.ReDirection.Optimize.Enabled = true
+        notify("Enabled.")
+        end
+    end
+  end
+end
+)
+
+-- grabbed checks
+
+    if getgenv().Private.Checks.Grabbed == true and player and player.Character then
+        if player.Character:FindFirstChild("GRABBING_CONSTRAINT") then
+        return true
+        end
+end
+
+if getgenv().Private.Checks.Crew == true then
+while true do
+local newPlayer = game.Players.PlayerAdded:wait()
+if player:IsInGroup(newPlayer.Group) then
+table.insert(Ignored.Players, newPlayer)
+end
+end
+end
+
+
+    function TargetChecks(Target)
+    if getgenv().Private.Checks.Knocked == true and Target.Character then
+        return Target.Character.BodyEffects["K.O"].Value and true or false
+    end
+    return false
+    end
+
+
+function Anti_Curve()
+    local character = game.Players.LocalPlayer.Character
+    if getgenv().Private.Checks.Anti_Curve and character and character.PrimaryPart then
+        local characterCf = character.PrimaryPart.CFrame
+        local target = self.Character.HumanoidRootPart
+        local targetPos = target.Position
+        local charPos = character.PrimaryPart.Position
+        character:SetPrimaryPartCFrame(CFrame.lookAt(charPos, v3(targetPos.X, charPos.Y, targetPos.Z)))
+        wait()
+        character:SetPrimaryPartCFrame(characterCf)
+    end
+end
+
+
+
+
+	if getgenv().Private.Checks.Friend then
+		if table.find(Script.Friends, Target.UserId) then
+			return nil
+		end
+	end
+	
+	
+if Private.Checks.AntiGroundShot and 
+Plr2 ~= nil and
+Plr2 and 
+Plr2.Character:FindFirstChild("Humanoid") and 
+Plr2.Character:FindFirstChild("Humanoid") == Enum.HumanoidStateType.Freefall then
+    pcall(function()
+        local TargetVelv5 = Plr2.Character[Private.ReDirection.HitParts.Prediction and Private.ReDirection.HitParts.Prediction]
+        TargetVelv5.Velocity = V3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 0.2), TargetVelv5.Velocity.Z)
+        TargetVelv5.AssemblyLinearVelocity = V3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 0.2), TargetVelv5.Velocity.Z)
+    end)
+end
+
+task.spawn(function()
+    pcall(function()
+        repeat wait() until game.CoreGui.RobloxGui:FindFirstChild("PerformanceStats") 
+        for __, v in pairs(game.CoreGui.RobloxGui.PerformanceStats:GetChildren()) do
+            if v.Name == "PS_Button" and v.StatsMiniTextPanelClass.TitleLabel.Text == "Mem" then
+                Memory = v.StatsMiniTextPanelClass.ValueLabel
+            end
+        end
+        
+        Memory:GetPropertyChangedSignal("Text"):Connect(function()
+            if Private.MemorySpoofer.Enabled then 
+                local random1 = math.random(Private.MemorySpoofer.Start, Private.MemorySpoofer.End)
+                local rand1 = math.random(0,9)
+                local rand2 = math.random(0,9)
+                Memory.Text = "".. random1 .. "." .. rand1 .. rand2.. " MB"
+            end
+        end)
+    end)
+end)
+
+while getgenv().Private.AutoPrediction.Enabled == true do
+    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local pingNumber = string.split(Ping, " ")[1] -10
+        if pingNumber < 10 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_10
+        elseif pingNumber < 20 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_20
+        elseif pingNumber < 30 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_30
+        elseif pingNumber < 40 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_40
+        elseif pingNumber < 50 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_50
+        elseif pingNumber < 60 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_60
+        elseif pingNumber < 70 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_70
+        elseif pingNumber < 80 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_80
+        elseif pingNumber < 90 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_90
+        elseif pingNumber < 100 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_100
+        elseif pingNumber < 110 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_110 + 0.02
+        elseif pingNumber < 120 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_120 + 0.03
+        elseif pingNumber < 130 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_130 + 0.04
+        elseif pingNumber < 140 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_140 + 0.05
+        elseif pingNumber < 150 then
+        getgenv().Private.ReDirection.Predict.Prediction = getgenv().Private.AutoPrediction.Ping_150 
+    end
+    wait(0.4)
+end
+
+
+-- // Move Direction Resolver
+
+RunService.Heartbeat:Connect(function()
+	for i, Target in pairs(Players:GetPlayers()) do
+		if Target ~= player then
+			for i, Part in pairs(Target.Character:GetChildren()) do
+				if Valve.Resolver.Enabled and Part:IsA("BasePart") then
+					if Valve.Resolver.Enabled then
+						Part.Velocity =
+							Target.Character.Humanoid.MoveDirection *
+							Valve.Resolver.PreDiction
+						Part.AssemblyLinearVelocity =
+							Target.Character.Humanoid.MoveDirection *
+							Valve.Resolver.PreDiction
+					else
+						Part.Velocity =
+							Part.Velocity * 0
+						Part.AssemblyLinearVelocity =
+							Part.AssemblyLinearVelocity * 0
+					end
+				end
+			end
+		end
+	end
+end)
+
+-- // Anti Aim Viewer
+
+if Private.Resolver.Anti_Aim_Viewer then
+    for i, v in pairs(game.Players:GetPlayers()) do
+    if v ~= Client and v.Character and v.Character:FindFirstChild("Head") and  v.Character:FindFirstChild("HumanoidRootPart")  then
+        local c = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+            local d = (V2.new(Mouse.X, Mouse.Y) - V2.new(c.X, c.Y)).Magnitude
+        end
+    end
+end
+
+local Panic = false
+Uis.InputBegan:connect(function(input, Gp)
+    if not Gp then
+        if input.KeyCode == Enum.KeyCode[string.upper(Private.Disable_Everything.Disable.Disable_Key)] and Private.Disable_Everything.Disable.Enabled then
+            Panic = not Panic
+            if Panic then
+                if Private.ReDirection.Optimize.Enabled == true then
+                    Private.ReDirection.Optimize.Enabled = not Private.ReDirection.Optimize.Enabled
+                end
+                if Private.AimAssist.Optimize.Enabled == true then
+                    Private.AimAssist.Optimize.Enabled = not Private.AimAssist.Optimize.Enabled
+                end
+                if Private.FOV.ReDirection.Optimize.Visible == true then
+                    Private.FOV.ReDirection.Optimize.Visible = not Private.FOV.ReDirection.Optimize.Visible
+                end
+                if Private.FOV.ReDirection.Optimize.Visible == true then
+                    Private.FOV.ReDirection.Optimize.Visible = not Private.FOV.ReDirection.Optimize.Visible
+                end
+            end
+        end
+    end
+end)
+
+
+Mouse.KeyDown:Connect(function(Key)
+    if Key == (string.lower(Private.Macro.Bind)) and Private.Macro.BypassMacroAbuse == false then
+        if Private.Macro.Enabled then
+            SpeedGlitch = not SpeedGlitch
+            if SpeedGlitch == true then
+                repeat task.wait(Private.Macro.Speed / 100)
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, "I", false, game)
+                task.wait(Private.Macro.Speed / 100)
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, "O", false, game)
+                task.wait(Private.Macro.Speed / 100)
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, "I", false, game)
+                task.wait(Private.Macro.Speed / 100)
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, "O", false, game)
+                task.wait(Private.Macro.Speed / 100)
+                until SpeedGlitch == false
+            end
+        end
+    end
+end)
+
+Mouse.KeyDown:Connect(function(Key)
+    if Key == (string.lower(Private.Macro.Bind)) and Private.Macro.BypassMacroAbuse == true then
+        if Private.Macro.Enabled then
+            SpeedGlitch = not SpeedGlitch
+            if SpeedGlitch == true then
+                repeat task.wait(Private.Macro.Speed / 100)
+                    game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
+                    task.wait(Private.Macro.Speed / 100)
+                    game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", false, game)
+                    task.wait(Private.Macro.Speed / 100)
+                    game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
+                    task.wait(Private.Macro.Speed / 100)
+                    game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", false, game)
+                    task.wait(Private.Macro.Speed / 100)
+                until SpeedGlitch == false
+            end
+        end
+    end
+end)
+
+
+if Private.Spin.Enabled then 
+    pcall(function()
+        if Spin == true then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(Private.Misc.Spin.Speed), 0)
+        end
+    end)
+end
+
+Mouse.KeyDown:Connect(function(Key)
+if Key == (string.lower(Private.Spin.KeyBind))then
+    if Private.Spin.Enabled then
+        Spin = not Spin
+    end
+end
+end)
+
+if getgenv().Private.Spin.Enabled then
+    if Private.Spin.Speed == 185 / 1 then
+        Private.Spin.Speed = 100
+    end
+end
